@@ -12,15 +12,6 @@ admin.initializeApp({
 
 const db = admin.firestore();
 
-
-// // Create and Deploy Your First Cloud Functions
-// // https://firebase.google.com/docs/functions/write-firebase-functions
-//
-// exports.helloWorld = functions.https.onRequest((request, response) => {
-//   functions.logger.info("Hello logs!", {structuredData: true});
-//   response.send("Hello from Firebase!");
-// });
-
 // Take the text parameter passed to this HTTP endpoint and insert it into
 // Firestore under the path /messages/:documentId/original
 exports.addMessage = functions.https.onRequest(async (req, res) => {
@@ -86,44 +77,4 @@ exports.broadcastAll = functions.firestore.document("/messages/{documentId}")
           .catch((err) => {
             console.log("Error getting documents", err);
           });
-      // admin.database().ref('/tokens/test').once('value').then(result=>{
-      //     console.log('result: ');
-      //     console.log(result.val());
-      // });
-      // console.log
     });
-
-//     export const sendPushNotification = async (token, title, body,) => {
-//         console.log("token==>", token);
-
-//         const FIREBASE_API_KEY = "AIzaSyBX8HBmxS9wdPaAB-qK-87hq4E0ZSON0dw"
-//         const fcmToken = await messaging().getToken();
-
-//         const message = {
-//           registration_ids: [token],
-//           notification: {
-//             title: title,
-//             body: body,
-//             vibrate: 1,
-//             sound: 1,
-//             show_in_foreground: true,
-//             priority: "high",
-//             content_available: true
-//           },
-//         };
-//         console.log("message==>", message);
-
-//         let headers = new Headers({
-//           "Content-Type": "application/json",
-//           'Authorization': 'Bearer ' + fcmToken
-//         });
-
-//         let response = await fetch("https://fcm.googleapis.com/v1/projects/project-249012544062/messages:send", {
-//           method: "POST",
-//           headers,
-//           body: JSON.stringify(message)
-//         });
-//           console.log("=><*", response);
-//           response = await response.json();
-//           console.log(response);
-//         };
